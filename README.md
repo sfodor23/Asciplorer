@@ -14,7 +14,7 @@
 
 Asciplorer is a terminal Simulation/Screensaver made in C++ that focuses on the exploration of a randomly generated, realistic map by a path finding algorithm/bot. It has realistic map generation, immense customization, detailed statistic tracking, great performance, and more amazing features!
 
-[Watch the Asciplorer Trailer](./AsciplorerTrailer.mp4)
+[Watch the Asciplorer Trailer](https://www.youtube.com/watch?v=lm1vumMTd2c)
 
 ## Download
 
