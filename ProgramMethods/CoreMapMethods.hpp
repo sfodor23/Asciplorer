@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "../RealTimeStatistics/RealTimeStatistics.hpp"
+
 template <typename T>
 class Map {
 public:
@@ -20,7 +22,7 @@ public:
 
     void GenerateMapArray();
     void ManualMapArrayDeletion();
-    void PrintMap();
+    void PrintMap(int LowerVisibilityBondX, int HigherVisibilityBondX, int LowerVisibilityBondY, int HigherVisibilityBondY);
 };
 
 template <typename T>
@@ -72,41 +74,15 @@ void Map<T>::ManualMapArrayDeletion() {
 }
 
 template <typename T>
-void Map<T>::PrintMap() {
-    std::cout << "\n";
-        
-    int CurrentFirstDigit = 0;
-        
-    for (int x = 0; x < XDimension; x++) {
-        if ((x + 1) % 10 == 0) {
-            CurrentFirstDigit = (x + 1)/10;
-        }
-        if (CurrentFirstDigit == 0) {
-            std::cout << "  ";
-        }
-        else {
-            std::cout << CurrentFirstDigit << " ";
-        }
-    }
+void Map<T>::PrintMap(int LowerVisibilityBondX, int HigherVisibilityBondX, int LowerVisibilityBondY, int HigherVisibilityBondY) {
+    int LineIndex = 0;
 
-    std::cout << "\n";
-        
-    for (int x = 0; x < XDimension; x++) {
-        std::cout << (x + 1) % 10 << " ";
-    }
-        
-    std::cout << "\n";
-        
-    for (int x = 0; x < XDimension; x++) {
-        std::cout << "_ ";
-    } 
-        
-    std::cout << "\n\n";
-        
-    for (int y = 0; y < YDimension; y++) {
-        for (int x = 0; x < XDimension; x++) {
-            std::cout << MapArray[y][x] << " ";
+    for (int y = LowerVisibilityBondY; y < HigherVisibilityBondY; y++) {
+        for (int x = LowerVisibilityBondX; x < HigherVisibilityBondX; x++) {
+            CurrentStatistics.PrintingLine[LineIndex] += MapArray[y][x];
+            CurrentStatistics.PrintingLine[LineIndex] += " ";
         }
-        std::cout << " |" << y + 1 << "\n";
+        
+        LineIndex++;
     }
 }
